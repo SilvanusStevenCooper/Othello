@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: "Taskify",
+  title: "Othello",
   description: `Collaborate, Manage Projects, and Reach New Productivity Peaks.
-  Taskify Helps you get more organized and work effectly`,
+  Othello Helps you get more organized and work effectly`,
 };
