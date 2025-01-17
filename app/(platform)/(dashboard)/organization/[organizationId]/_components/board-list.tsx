@@ -6,7 +6,9 @@ import { auth } from "@clerk/nextjs";
 import { HelpCircle, User2 } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import React from "react";
+import { MAX_FREE_BOARD } from "@/constants/boards";
+import { getAvailableCount } from "@/lib/org-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 const BoardList = async () => {
   const { orgId } = auth();
@@ -24,6 +26,10 @@ const BoardList = async () => {
       createdAt: "desc",
     },
   });
+
+  const availableCount = await getAvailableCount();
+  const isPro = await checkSubscription();
+
   return (
     <div className="space-y-4">
       <div className="flex items-center font-semibold text-lg text-neutral-700">
@@ -52,7 +58,11 @@ const BoardList = async () => {
           flex-col gap-y-1 items-center justify-center hover:opacity-75 transition"
           >
             <p className="text-sm">Create New Board</p>
-            <span className="text-xs">5 remaining</span>
+            <span className="text-xs">
+              {isPro
+                ? "Unlimited Boards"
+                : `${MAX_FREE_BOARD - availableCount} remaining`}
+            </span>
             <Hint
               sideOffset={20}
               description={`

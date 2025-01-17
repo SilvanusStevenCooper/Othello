@@ -33,7 +33,7 @@ const MarketingPage = () => {
           No 1 Task Management System
         </div>
         <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
-          Taskify Helps Teams Move
+          Othello Helps Teams Move
         </h1>
         <div
           className="text-3xl md:text-6xl bg-gradient-to-r 
@@ -51,10 +51,10 @@ const MarketingPage = () => {
       >
         Collaborate, Manage Projects, and Reach New Productivity Peaks. From
         High Risers to the Home Office. The Way Your Team Works is Unique.
-        Accomplish it all With Taskify.
+        Accomplish it all With Othello.
       </div>
       <Button className="mt-6" size={"lg"} asChild>
-        <Link href="/sign-up">Get Taskify For Free</Link>
+        <Link href="/sign-up">Get Othello For Free</Link>
       </Button>
     </div>
   );

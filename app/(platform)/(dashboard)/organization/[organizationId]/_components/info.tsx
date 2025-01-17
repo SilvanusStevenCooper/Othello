@@ -1,13 +1,26 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import { checkSubscription } from "@/lib/subscription";
 import { useOrganization } from "@clerk/nextjs";
 import { CreditCard } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Info = () => {
+interface InfoProps {
+  isPro: boolean;
+}
+const Info = ({ isPro }: InfoProps) => {
   const { organization, isLoaded } = useOrganization();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  });
+
+  if (!isMounted) {
+    return null;
+  }
 
   if (!isLoaded) {
     return <Info.Skeleton />;
@@ -26,7 +39,7 @@ const Info = () => {
         <p className="font-semibold text-xl">{organization?.name}</p>
         <div className="text-xs flex items-center text-muted-foreground">
           <CreditCard className="h-4 w-4 mr-1" />
-          Free
+          {isPro ? "PRO" : "Free"}
         </div>
       </div>
     </div>

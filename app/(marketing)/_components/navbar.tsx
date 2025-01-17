@@ -22,7 +22,7 @@ const Navbar = () => {
             <Link href="/sign-in">Login</Link>
           </Button>
           <Button size={"sm"} asChild>
-            <Link href={"/sign-up"}>Get Taskify for Free</Link>
+            <Link href={"/sign-up"}>Get Othello for Free</Link>
           </Button>
         </div>
       </div>
